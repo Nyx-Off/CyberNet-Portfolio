@@ -6,7 +6,7 @@
 ![Static Badge](https://img.shields.io/badge/CSS-black?style=plastic&logo=css3&logoColor=white&logoSize=auto&color=blue)
 ![Static Badge](https://img.shields.io/badge/PHP-black?style=plastic&logo=php&logoColor=white&logoSize=auto&color=green)
 
-![Aperçu du Portfolio](https://www.example.com/path/to/demo.gif)
+![Aperçu du Portfolio](https://github.com/Nyx-Off/CyberNet-Portfolio/blob/main/Animation.gif)
 
 
 ## Description
