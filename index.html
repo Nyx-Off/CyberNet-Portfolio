@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<!--       
+
+Tu cherches quoi ? Des failles ? o((⊙﹏⊙))o
+Pourquoi faire ? Ce n'est pas du WordPress, hein ￣へ￣
+Oui, je l'ai codé moi-même, sans IA ! (❁´◡`❁)
+Tu veux copier mon site ? Vas-y, mais pense à me créditer au moins ! ლ(╹◡╹ლ)
+
+Oui, j'ai qu'un seul fichier HTML pour tout le site, et oui, le CSS est dedans. Pas besoin de compliquer les choses pour ce genre de projet. (●'◡'●)
+
+Et oui, j'ai galéré pour la physique du fond... （︶^︶）
+
+
+petit signature : ƪ(˘⌣˘)ʃ
+
+__/\\\\\_____/\\\_____________________________        
+ _\/\\\\\\___\/\\\_____________________________       
+  _\/\\\/\\\__\/\\\____/\\\__/\\\_______________      
+   _\/\\\//\\\_\/\\\___\//\\\/\\\___/\\\____/\\\_     
+    _\/\\\\//\\\\/\\\____\//\\\\\___\///\\\/\\\/__    
+     _\/\\\_\//\\\/\\\_____\//\\\______\///\\\/____   
+      _\/\\\__\//\\\\\\__/\\_/\\\________/\\\/\\\___  
+       _\/\\\___\//\\\\\_\//\\\\/_______/\\\/\///\\\_ 
+        _\///_____\/////___\////________\///____\///__
+                                                      
+        (っ◔◡◔)っ ♥ Portfolio Samy Bensalem ♥
+        c'est stylé, non ? ( ͡❛ ͜ʖ ͡❛)
+
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Samy Bensalem</title>
+    <link rel="icon" href="images/red-hat.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background: linear-gradient(to bottom, #0a192f, #1e3b60);
+            position: relative;
+        }
+
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: animStars linear infinite;
+        }
+
+        @keyframes animStars {
+            from {
+                transform: translateY(100vh);
+            }
+
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: rgba(10, 25, 47, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+            box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.5s ease, color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: #62feda;
+            color: #0a192f;
+        }
+
+        /* Styles pour le menu burger */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Media query pour rendre le menu responsive */
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(10, 25, 47, 0.9);
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            .navbar-links a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .navbar.active .navbar-links {
+                display: flex;
+            }
+
+            /* Animation du menu burger */
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #62feda;
+            animation: floatingText 3s infinite alternate;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        @keyframes floatingText {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        section {
+            padding: 100px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 0;
+            position: relative;
+        }
+
+        h2 {
+            color: #62feda;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: "";
+            width: 50px;
+            height: 4px;
+            background: #62feda;
+            display: block;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            background: rgba(15, 35, 65, 0.8);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background: rgba(20, 40, 70, 0.9);
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+
+        .contact {
+            background: rgba(0, 40, 100, 0.9);
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact a {
+            color: #62feda;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid #62feda;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .contact a:hover {
+            background: #62feda;
+            color: #0a192f;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li::before {
+            content: "•";
+            color: #62feda;
+            margin-right: 8px;
+        }
+
+        /*secret */
+
+        .discreet-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            color: #62feda;
+            font-size: 24px;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .discreet-button:hover {
+            color: #0a192f;
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectContainer = document.getElementById('projects-container');
+        
+            fetch('get_github_projects.php')
+                .then(response => response.json())
+                .then(projects => {
+                    projects.forEach(project => {
+                        const card = document.createElement('a');
+                        card.className = 'card';
+                        card.href = project.url;
+                        card.target = "_blank";
+        
+                        const title = document.createElement('h3');
+                        title.innerText = project.name;
+                        card.appendChild(title);
+        
+                        const description = document.createElement('p');
+                        description.innerText = project.description;
+                        card.appendChild(description);
+        
+                        const techUsed = document.createElement('p');
+                        techUsed.innerHTML = `<strong>Technologies utilisées:</strong> ${project.languages}`;
+                        card.appendChild(techUsed);
+        
+                        projectContainer.appendChild(card);
+                    });
+                })
+                .catch(error => console.error('Erreur lors de la récupération des projets :', error));
+        
+            // JavaScript pour le menu burger
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbar = document.querySelector('.navbar');
+        
+            menuToggle.addEventListener('click', () => {
+                navbar.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="animated-background">
+        <script>
+            const numStars = 500;
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'stars';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.animationDuration = `${Math.random() * 60 + 15}s`;
+                document.querySelector('.animated-background').appendChild(star);
+            }
+        </script>
+    </div>
+
+    <div class="navbar">
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-links">
+            <a href="#about">À propos de moi</a>
+            <a href="#education">Parcours scolaire</a>
+            <a href="#experience">Expérience professionnelle</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+
+    <header>
+        <h1>Samy Bensalem</h1>
+        <p>Administrateur Réseaux & Sécurité</p>
+    </header>
+
+    <section id="about">
+        <h2>À propos de moi</h2>
+        <div class="card">
+            <img src="images/profile.jpg" alt="Portrait de Samy Bensalem" class="profile-image" width="150" height="150">
+            <p>Je suis un administrateur réseaux spécialisé en cybersécurité. Passionné par la programmation et la culture japonaise, je m'intéresse aux nouvelles technologies.</p>
+            <ul>
+                <li>Âge : 23 ans</li>
+                <li>Localisation : Osny | 95</li>
+                <li>Contact: samy.bensalem@etik.com | Telephone </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Parcours scolaire</h2>
+        <div class="card">
+            <h3>Bac +5 Cybersécurité - E3IN (1ans/2ans)</h3>
+            <p>2024 - Now , ESIEE-IT Pontoise</p>
+        </div>
+        <div class="card">
+            <h3>Bachelor informatique L3 - Cybersécurité</h3>
+            <p>2023 - 2024, ESIEE-IT Pontoise</p>
+        </div>
+        <div class="card">
+            <h3>Diplôme d'Ingénieur Réseaux & Sécurité</h3>
+            <p>09/2022 - 09/2023, ESIEE-IT PONTOISE</p>
+        </div>
+        <div class="card">
+            <h3>BTS Systèmes Numériques Informatique et Réseaux</h3>
+            <p>2020 - 2022, ESIEE-IT PONTOISE</p>
+        </div>
+        <div class="card">
+            <h3>Baccalauréat STI2D Option SIN</h3>
+            <p>07/2020, Jean Perrin Saint-Ouen-l’Aumône</p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Expérience professionnelle</h2>
+        <div class="card">
+            <h3>Administrateur Réseaux & Sécurité</h3>
+            <p>2023 - 2024, BIOFUTUR Cergy 95</p>
+            <ul>
+                <li>Gestion du parc informatique</li>
+                <li>Déploiement de solutions de cybersécurité</li>
+                <li>Réalisations de projets</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Administrateur Réseaux & Sécurité</h3>
+            <p>2022 - 2023, BIOFUTUR Cergy 95</p>
+            <ul>
+                <li>Gestion du parc informatique</li>
+                <li>Déploiement de solutions de cybersécurité</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Développeur web</h3>
+            <p>2021 - 2022, BIOFUTUR Cergy 95</p>
+            <ul>
+                <li>Refonte du site web existant.</li>
+                <li>Sécurisation des accès et des comptes utilisateurs.</li>
+                <li>Gestion et mise à jour du site web.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Développeur web</h3>
+            <p>2020 - 2021, BERIM Pantin, 95520</p>
+            <ul>
+                <li>Conception du site web</li>
+                <li>Ajout de modules (offres d'emplois, etc.)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Compétences</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Esprit Critique</li>
+                    <li>Résolutions de problèmes</li>
+                    <li>Sens du service</li>
+                    <li>Créativité</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Hard Skills</h3>
+                <ul>
+                    <li>Maitrise Active Directory</li>
+                    <li>Scripting shell / bash </li>
+                    <li>Environement Linux</li>
+                    <li>Programmation (C++, C, Python, Java)</li>
+                    <li>HTML/CSS/JavaScript/PHP/SQL</li>
+                    <li>Modélisations 3D</li>
+                </ul>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Langues</h3>
+                <ul>
+                    <li>Anglais - Niveau B1/B2</li>
+                    <li>Espagnol - Niveau A2/B1</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Centres d'intérêt</h3>
+                <ul>
+                    <li>Programmation</li>
+                    <li>Nouvelles technologies</li>
+                    <li>Tir à l'arc</li>
+                    <li>Culture japonaise</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects">
+        <h2>Projets</h2>
+        <div class="grid" id="projects-container">
+            <!-- projets GitHub affichés ici -->
+        </div>
+    </section>
+
+    <div class="contact" id="contact">
+        <h2>Contactez-moi</h2>
+        <p>Vous pouvez me joindre par email à <a href="mailto:samy.bensalem@etik.com">samy.bensalem@etik.com</a> ou par téléphone au "Telephone".</p>
+        <a href="https://bensalemdev.fr/game" class="discreet-button" target="_blank">
+            <i class="fas fa-gamepad"></i>
+        </a>
+</body>
+
+</html>
