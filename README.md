@@ -19,7 +19,6 @@ Ce projet est un template de site portfolio entièrement codé en HTML, CSS et J
 - **Intégration GitHub :** Les projets sont automatiquement récupérés depuis GitHub via une API PHP.
 - **Effets animés :** Fond animé avec des étoiles, animations au survol des cartes de projet.
 - **Menu burger :** Menu de navigation responsive avec un effet de transformation.
-- **Section Contact :** Inclut un bouton discret menant à un mini-jeu caché.
 
 ## Utilisation
 
