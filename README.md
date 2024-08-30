@@ -6,7 +6,8 @@
 ![Static Badge](https://img.shields.io/badge/CSS-black?style=plastic&logo=css3&logoColor=white&logoSize=auto&color=blue)
 ![Static Badge](https://img.shields.io/badge/PHP-black?style=plastic&logo=php&logoColor=white&logoSize=auto&color=green)
 
-![screenshot](screenshot.png)
+![Aperçu du Portfolio](https://www.example.com/path/to/demo.gif)
+
 
 ## Description
 
@@ -61,4 +62,3 @@ Ce projet est sous licence MIT. Vous pouvez l'utiliser librement pour vos projet
 ---
 
 *Conçu avec ❤️ par [Nyx-Off](https://github.com/Nyx-Off).*
-```
